@@ -12,4 +12,4 @@ COPY comprobar_stock.py .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Comando para ejecutar el script cuando el contenedor se inicie
-CMD ["python3", "comprobar_stock.py"]
+CMD ["python3", "-u", "comprobar_stock.py"]
