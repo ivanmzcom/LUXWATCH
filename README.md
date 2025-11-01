@@ -61,7 +61,7 @@ Para asegurar la compatibilidad con diferentes arquitecturas de CPU (como Apple 
 ### 3. Configurar y Ejecutar con Docker Compose
 
 1.  Crea un archivo llamado `docker-compose.yml` con el siguiente contenido.
-2.  Reemplaza los valores `TU_TOKEN_AQUI` y `TU_CHAT_ID_AQUI` con tus credenciales.
+2.  Reemplaza los valores de las variables de entorno con tus credenciales y tu zona horaria.
 
 ```yaml
 version: '3.8'
@@ -73,6 +73,7 @@ services:
     environment:
       TELEGRAM_BOT_TOKEN: "TU_TOKEN_AQUI"
       TELEGRAM_CHAT_ID: "TU_CHAT_ID_AQUI"
+      TZ: "Europe/Madrid" # Reemplaza con tu zona horaria
     restart: always
 ```
 
