@@ -34,21 +34,22 @@ The primary method for running the project is via Docker Compose, which pulls a 
 
 ### Building and Pushing the Image (for development)
 
-If you make changes to the script, you need to build and push a new image to the GitHub Container Registry.
+If you make changes to the script, you need to build and push a new multi-platform image to the GitHub Container Registry.
 
 1.  **Log in to GitHub Container Registry:**
     ```bash
     docker login ghcr.io -u YOUR_GITHUB_USERNAME -p YOUR_PERSONAL_ACCESS_TOKEN
     ```
 
-2.  **Build the image:**
+2.  **Create and switch to a new `buildx` builder instance (if it's your first time):**
     ```bash
-    docker build -t ghcr.io/ivanmzcom/luxwatch:latest .
+    docker buildx create --name mybuilder --use
     ```
 
-3.  **Push the image:**
+3.  **Build and push the multi-platform image:**
+    This command will build the image for `linux/amd64` and `linux/arm64` and push it directly to the registry.
     ```bash
-    docker push ghcr.io/ivanmzcom/luxwatch:latest
+    docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/ivanmzcom/luxwatch:latest --push .
     ```
 
 ## Development Conventions

@@ -37,26 +37,7 @@ Para que el script funcione, el bot de Telegram debe tener los siguientes permis
 
 Asegúrate de que tu bot es administrador del canal y tiene ambos permisos activados.
 
-### 2. Publicar en GitHub Container Registry (Imagen Multi-Arquitectura)
 
-Para asegurar la compatibilidad con diferentes arquitecturas de CPU (como Apple Silicon y Synology NAS), la imagen de Docker debe ser construida para múltiples plataformas.
-
-1.  **Inicia sesión en `ghcr.io`:**
-    Necesitarás un [Personal Access Token (PAT)](https://docs.github.com/es/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) con el permiso `write:packages`.
-    ```bash
-    docker login ghcr.io -u TU_USUARIO_DE_GITHUB -p TU_PAT
-    ```
-
-2.  **Crea y activa un nuevo constructor de `buildx` (si es la primera vez):**
-    ```bash
-    docker buildx create --name mybuilder --use
-    ```
-
-3.  **Construye y sube la imagen multi-arquitectura:**
-    Este comando construirá la imagen para `linux/amd64` (para tu NAS) y `linux/arm64` (para Apple Silicon) y la subirá directamente al registro.
-    ```bash
-    docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/ivanmzcom/luxwatch:latest --push .
-    ```
 
 ### 3. Configurar y Ejecutar con Docker Compose
 
