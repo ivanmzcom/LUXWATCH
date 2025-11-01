@@ -40,7 +40,37 @@ Asegúrate de que tu bot es administrador del canal y tiene ambos permisos activ
 
 
 
-### 3. Configurar y Ejecutar con Docker Compose
+### 3. Despliegue con Docker Run
+
+Si prefieres no usar `docker-compose`, puedes desplegar el contenedor directamente con `docker run`.
+
+1.  **Descarga la imagen:**
+    ```bash
+    docker pull ghcr.io/ivanmzcom/luxwatch:latest
+    ```
+
+2.  **Ejecuta el contenedor:**
+    Reemplaza `TU_TOKEN_AQUI` y `TU_CHAT_ID_AQUI` con tus valores.
+    ```bash
+    docker run -d \
+      --name lux-stock-checker \
+      -e TELEGRAM_BOT_TOKEN="TU_TOKEN_AQUI" \
+      -e TELEGRAM_CHAT_ID="TU_CHAT_ID_AQUI" \
+      -e TZ="Europe/Madrid" \
+      ghcr.io/ivanmzcom/luxwatch:latest
+    ```
+
+3.  **Para detener el contenedor:**
+    ```bash
+    docker stop lux-stock-checker
+    ```
+
+4.  **Para eliminar el contenedor (después de detenerlo):**
+    ```bash
+    docker rm lux-stock-checker
+    ```
+
+### 4. Configurar y Ejecutar con Docker Compose
 
 1.  Crea un archivo llamado `docker-compose.yml` con el siguiente contenido.
 2.  Reemplaza los valores de las variables de entorno con tus credenciales y tu zona horaria.
