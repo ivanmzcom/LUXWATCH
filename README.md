@@ -7,6 +7,7 @@ Este proyecto contiene un script de Python que monitoriza la disponibilidad de u
 - **Monitorización de Stock:** Comprueba si un producto está disponible, esperando un tiempo aleatorio entre 178 y 499 segundos entre cada comprobación para evitar patrones predecibles.
 - **Alertas por Telegram:** Envía un mensaje al canal de Telegram configurado cuando el producto está en stock o cuando se produce un error.
 - **Actualización de Descripción del Canal:** Actualiza la descripción del canal de Telegram con el estado actual del stock (`¡EN STOCK!`, `Agotado` o `Error de conexión`) y la hora de la última comprobación.
+- **Registro de Actividad:** Utiliza el módulo `logging` de Python para registrar la actividad del script, lo que facilita la depuración y el seguimiento en los logs de Docker.
 
 
 ## Configuración
